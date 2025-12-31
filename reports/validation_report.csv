@@ -1,0 +1,28 @@
+check_name,table,severity,passed,failed_count,sample_failures
+required_columns,suppliers,CRITICAL,TRUE,0,[]
+required_columns,parts,CRITICAL,TRUE,0,[]
+required_columns,purchase_orders,CRITICAL,TRUE,0,[]
+required_columns,po_lines,CRITICAL,TRUE,0,[]
+primary_key_unique,suppliers,CRITICAL,TRUE,0,[]
+primary_key_unique,parts,CRITICAL,FALSE,2,"[{'part_id': 101}, {'part_id': 101}]"
+primary_key_unique,purchase_orders,CRITICAL,TRUE,0,[]
+primary_key_unique,po_lines,CRITICAL,TRUE,0,[]
+not_null:supplier_id,suppliers,CRITICAL,TRUE,0,[]
+not_null:part_id,parts,CRITICAL,TRUE,0,[]
+not_null:po_id,purchase_orders,CRITICAL,TRUE,0,[]
+not_null:po_line_id,po_lines,CRITICAL,TRUE,0,[]
+not_null:supplier_id,purchase_orders,CRITICAL,FALSE,1,[{'supplier_id': nan}]
+not_null:po_id,po_lines,CRITICAL,TRUE,0,[]
+not_null:part_id,po_lines,CRITICAL,TRUE,0,[]
+allowed_values:status,suppliers,WARN,FALSE,1,[{'status': 'Unknown'}]
+allowed_values:is_active,parts,WARN,FALSE,1,[{'is_active': 'invalid'}]
+allowed_values:status,purchase_orders,WARN,FALSE,1,[{'status': 'Invalid'}]
+allowed_values:currency,purchase_orders,WARN,FALSE,1,[{'currency': 'XXX'}]
+numeric_min:qty,po_lines,CRITICAL,FALSE,2,"[{'qty': -2}, {'qty': 0}]"
+numeric_min:unit_price,po_lines,CRITICAL,TRUE,0,[]
+numeric_min:total_amount,purchase_orders,WARN,FALSE,1,[{'total_amount': -100.0}]
+fk_exists:supplier_id->supplier_id,purchase_orders,CRITICAL,FALSE,1,[{'supplier_id': 999.0}]
+fk_exists:po_id->po_id,po_lines,CRITICAL,FALSE,1,[{'po_id': 999}]
+fk_exists:part_id->part_id,po_lines,CRITICAL,TRUE,0,[]
+line_amount_math,po_lines,CRITICAL,FALSE,2,"[{'qty': 3, 'unit_price': 200.0, 'line_amount': 605.0, '_expected': 600.0, '_diff': 5.0}, {'qty': -2, 'unit_price': 150.0, 'line_amount': 300.0, '_expected': -300.0, '_diff': 600.0}]"
+po_totals_reconcile,purchase_orders,WARN,FALSE,4,"[{'po_id': 1001, 'total_amount': 5000.5, 'line_amount': 1000.0, '_diff': 4000.5}, {'po_id': 1002, 'total_amount': 3200.75, 'line_amount': 605.0, '_diff': 2595.75}, {'po_id': 1003, 'total_amount': -100.0, 'line_amount': 300.0, '_diff': 400.0}, {'po_id': 1005, 'total_amount': 12500.0, 'line_amount': 0.0, '_diff': 12500.0}]"

@@ -1,0 +1,304 @@
+[
+  {
+    "check_name": "required_columns",
+    "table": "suppliers",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "required_columns",
+    "table": "parts",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "required_columns",
+    "table": "purchase_orders",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "required_columns",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "primary_key_unique",
+    "table": "suppliers",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "primary_key_unique",
+    "table": "parts",
+    "severity": "CRITICAL",
+    "passed": false,
+    "failed_count": 2,
+    "sample_failures": [
+      {
+        "part_id": 101
+      },
+      {
+        "part_id": 101
+      }
+    ]
+  },
+  {
+    "check_name": "primary_key_unique",
+    "table": "purchase_orders",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "primary_key_unique",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "not_null:supplier_id",
+    "table": "suppliers",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "not_null:part_id",
+    "table": "parts",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "not_null:po_id",
+    "table": "purchase_orders",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "not_null:po_line_id",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "not_null:supplier_id",
+    "table": "purchase_orders",
+    "severity": "CRITICAL",
+    "passed": false,
+    "failed_count": 1,
+    "sample_failures": [
+      {
+        "supplier_id": NaN
+      }
+    ]
+  },
+  {
+    "check_name": "not_null:po_id",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "not_null:part_id",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "allowed_values:status",
+    "table": "suppliers",
+    "severity": "WARN",
+    "passed": false,
+    "failed_count": 1,
+    "sample_failures": [
+      {
+        "status": "Unknown"
+      }
+    ]
+  },
+  {
+    "check_name": "allowed_values:is_active",
+    "table": "parts",
+    "severity": "WARN",
+    "passed": false,
+    "failed_count": 1,
+    "sample_failures": [
+      {
+        "is_active": "invalid"
+      }
+    ]
+  },
+  {
+    "check_name": "allowed_values:status",
+    "table": "purchase_orders",
+    "severity": "WARN",
+    "passed": false,
+    "failed_count": 1,
+    "sample_failures": [
+      {
+        "status": "Invalid"
+      }
+    ]
+  },
+  {
+    "check_name": "allowed_values:currency",
+    "table": "purchase_orders",
+    "severity": "WARN",
+    "passed": false,
+    "failed_count": 1,
+    "sample_failures": [
+      {
+        "currency": "XXX"
+      }
+    ]
+  },
+  {
+    "check_name": "numeric_min:qty",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": false,
+    "failed_count": 2,
+    "sample_failures": [
+      {
+        "qty": -2
+      },
+      {
+        "qty": 0
+      }
+    ]
+  },
+  {
+    "check_name": "numeric_min:unit_price",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "numeric_min:total_amount",
+    "table": "purchase_orders",
+    "severity": "WARN",
+    "passed": false,
+    "failed_count": 1,
+    "sample_failures": [
+      {
+        "total_amount": -100.0
+      }
+    ]
+  },
+  {
+    "check_name": "fk_exists:supplier_id->supplier_id",
+    "table": "purchase_orders",
+    "severity": "CRITICAL",
+    "passed": false,
+    "failed_count": 1,
+    "sample_failures": [
+      {
+        "supplier_id": 999.0
+      }
+    ]
+  },
+  {
+    "check_name": "fk_exists:po_id->po_id",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": false,
+    "failed_count": 1,
+    "sample_failures": [
+      {
+        "po_id": 999
+      }
+    ]
+  },
+  {
+    "check_name": "fk_exists:part_id->part_id",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": true,
+    "failed_count": 0,
+    "sample_failures": []
+  },
+  {
+    "check_name": "line_amount_math",
+    "table": "po_lines",
+    "severity": "CRITICAL",
+    "passed": false,
+    "failed_count": 2,
+    "sample_failures": [
+      {
+        "qty": 3,
+        "unit_price": 200.0,
+        "line_amount": 605.0,
+        "_expected": 600.0,
+        "_diff": 5.0
+      },
+      {
+        "qty": -2,
+        "unit_price": 150.0,
+        "line_amount": 300.0,
+        "_expected": -300.0,
+        "_diff": 600.0
+      }
+    ]
+  },
+  {
+    "check_name": "po_totals_reconcile",
+    "table": "purchase_orders",
+    "severity": "WARN",
+    "passed": false,
+    "failed_count": 4,
+    "sample_failures": [
+      {
+        "po_id": 1001,
+        "total_amount": 5000.5,
+        "line_amount": 1000.0,
+        "_diff": 4000.5
+      },
+      {
+        "po_id": 1002,
+        "total_amount": 3200.75,
+        "line_amount": 605.0,
+        "_diff": 2595.75
+      },
+      {
+        "po_id": 1003,
+        "total_amount": -100.0,
+        "line_amount": 300.0,
+        "_diff": 400.0
+      },
+      {
+        "po_id": 1005,
+        "total_amount": 12500.0,
+        "line_amount": 0.0,
+        "_diff": 12500.0
+      }
+    ]
+  }
+]
